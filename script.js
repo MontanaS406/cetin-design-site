@@ -76,3 +76,15 @@ Fiyat ve uygunluk bilgisi rica ediyorum.`;
     window.open("https://wa.me/905347262206?text=" + encodeURIComponent(text), "_blank");
   });
 }
+
+const promoForm=document.getElementById("promoForm");
+if(promoForm){promoForm.addEventListener("submit",e=>{e.preventDefault();const g=id=>document.getElementById(id).value.trim()||"-";const text=`Merhaba Çetin Design,
+
+KURUMSAL BASKI & PROMOSYON TEKLİFİ
+Ürün: ${g("promoProduct")}
+Adet: ${g("promoQty")}
+Baskı: ${g("promoPrint")}
+Firma / Marka: ${g("promoBrand")}
+Ek not: ${g("promoNote")}
+
+Fiyat ve üretim süresi hakkında teklif rica ediyorum.`;window.open("https://wa.me/905347262206?text="+encodeURIComponent(text),"_blank")})}
