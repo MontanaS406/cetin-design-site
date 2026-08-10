@@ -54,3 +54,25 @@ Not: ${g("note")}
 Teklif almak istiyorum.`;
   window.open("https://wa.me/905347262206?text=" + encodeURIComponent(text), "_blank");
 });
+
+
+const bladeForm = document.getElementById("bladeForm");
+if (bladeForm) {
+  bladeForm.addEventListener("submit", e => {
+    e.preventDefault();
+    const g = id => document.getElementById(id).value.trim() || "-";
+    const text =
+`Merhaba Çetin Design,
+
+BIÇAK TEKLİF TALEBİ
+Bıçak tipi: ${g("bladeType")}
+Yükseklik: ${g("bladeHeight")}
+Kalınlık: ${g("bladeThickness")}
+Perfore bilgisi: ${g("bladePerf")}
+Toplam metre: ${g("bladeMeters")}
+Ek not: ${g("bladeNote")}
+
+Fiyat ve uygunluk bilgisi rica ediyorum.`;
+    window.open("https://wa.me/905347262206?text=" + encodeURIComponent(text), "_blank");
+  });
+}

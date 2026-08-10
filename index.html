@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0b0b0c" />
-  <meta name="description" content="Çetin Design — ürününüze özel kutu konstrüksiyonu, numune, kalıp ve üretim organizasyonu." />
+  <meta name="description" content="Çetin Design — kutu konstrüksiyonu, numune, kalıp, üretim organizasyonu ve metre bazlı kesim/perfore/kırım bıçağı teklifleri." />
   <title>Çetin Design — Ambalaj Tasarım & Üretim Çözümleri</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,6 +33,7 @@
 
     <nav class="nav" id="nav">
       <a href="#hizmetler">Hizmetler</a>
+      <a href="#bicak">Bıçak & Sarf</a>
       <a href="#surec">Süreç</a>
       <a href="#kimler">Kimler için?</a>
       <a href="#ornekler">Örnekler</a>
@@ -158,6 +159,95 @@
           <h3>Baskı & üretim</h3>
           <p>Baskı, kesim, yapıştırma ve teslim süreci uygun üreticiler üzerinden organize edilir.</p>
         </article>
+      </div>
+    </section>
+
+
+    <section class="blade-section section-pad" id="bicak">
+      <div class="blade-head reveal">
+        <div>
+          <div class="eyebrow"><span></span> BIÇAK & SARF</div>
+          <h2>Kalıp değilse de olur.<br><em>Bıçağı direkt al.</em></h2>
+          <p>
+            Kesim kalıbı yaptırmadan yalnızca bıçak ihtiyacınız varsa ölçü ve tip bilgilerinizi gönderin.
+            Metre bazlı talepler için hızlı teklif oluşturalım.
+          </p>
+        </div>
+
+        <div class="blade-visual" aria-hidden="true">
+          <div class="blade-ruler">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <div class="blade-metal"></div>
+          <div class="blade-label">STEEL RULE</div>
+          <div class="blade-measure m-a">1 m</div>
+          <div class="blade-measure m-b">↕ yükseklik</div>
+        </div>
+      </div>
+
+      <div class="blade-products">
+        <article class="blade-card reveal">
+          <span>01</span>
+          <h3>Düz kesim bıçağı</h3>
+          <p>Standart kesim işleri için metre bazlı teklif.</p>
+        </article>
+        <article class="blade-card reveal" data-delay="70">
+          <span>02</span>
+          <h3>Perfore bıçak</h3>
+          <p>Perfore tipi/oranı ve ölçü bilgisine göre teklif.</p>
+        </article>
+        <article class="blade-card reveal" data-delay="140">
+          <span>03</span>
+          <h3>Kırım bıçağı</h3>
+          <p>Kırım uygulamaları için uygun ölçüde ürün talebi.</p>
+        </article>
+        <article class="blade-card reveal" data-delay="210">
+          <span>04</span>
+          <h3>Özel tip</h3>
+          <p>Standart dışı ihtiyacınızı fotoğraf veya teknik bilgiyle iletin.</p>
+        </article>
+      </div>
+
+      <div class="blade-order reveal">
+        <div class="blade-order-copy">
+          <small>HIZLI BIÇAK TEKLİFİ</small>
+          <h3>Ölçünü yaz,<br>WhatsApp'a düşsün.</h3>
+          <p>Fiyatı sabitlemek yerine gerçek ölçü ve tipe göre teklif veriyoruz.</p>
+          <div class="blade-note">
+            <b>Örnek talep</b>
+            <span>1 metre perfore bıçak • yükseklik / kalınlık / perfore bilgisi</span>
+          </div>
+        </div>
+
+        <form class="blade-form" id="bladeForm">
+          <label>
+            <span>Bıçak tipi</span>
+            <select id="bladeType" required>
+              <option value="">Seçiniz</option>
+              <option>Düz kesim bıçağı</option>
+              <option>Perfore bıçak</option>
+              <option>Kırım bıçağı</option>
+              <option>Özel tip</option>
+            </select>
+          </label>
+
+          <div class="blade-field-row">
+            <label><span>Yükseklik</span><input id="bladeHeight" placeholder="Örn. 23.80 mm"></label>
+            <label><span>Kalınlık</span><input id="bladeThickness" placeholder="Örn. 0.71 mm"></label>
+          </div>
+
+          <div class="blade-field-row">
+            <label><span>Perfore bilgisi</span><input id="bladePerf" placeholder="Perfore ise oran / diş bilgisi"></label>
+            <label><span>Toplam metre</span><input id="bladeMeters" required placeholder="Örn. 10 m"></label>
+          </div>
+
+          <label><span>Ek not</span><textarea id="bladeNote" rows="4" placeholder="Marka, özel profil, teslim beklentisi vb."></textarea></label>
+
+          <button class="btn blade-submit" type="submit">
+            Bıçak için teklif iste <span>↗</span>
+          </button>
+          <small class="blade-form-note">Talep WhatsApp mesajına dönüştürülür; sipariş ve uygunluk sonradan teyit edilir.</small>
+        </form>
       </div>
     </section>
 
