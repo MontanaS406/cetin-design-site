@@ -1,90 +1,19 @@
-// V4: animation fallback
-if (!('IntersectionObserver' in window)) {
-  document.querySelectorAll('.reveal').forEach(el => {
-    el.classList.add('visible');
-    el.style.opacity = '1';
-    el.style.transform = 'none';
-  });
-}
 
-document.getElementById("year").textContent = new Date().getFullYear();
-
-const glow = document.getElementById("cursorGlow");
-window.addEventListener("pointermove", e => {
-  glow.style.left = e.clientX + "px";
-  glow.style.top = e.clientY + "px";
-});
-
-const io = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const delay = entry.target.dataset.delay || 0;
-      setTimeout(() => entry.target.classList.add("visible"), Number(delay));
-      io.unobserve(entry.target);
-    }
-  });
-}, {threshold:.12});
-
-document.querySelectorAll(".reveal").forEach(el => io.observe(el));
-
-const menuToggle = document.getElementById("menuToggle");
-const nav = document.getElementById("nav");
-menuToggle.addEventListener("click", () => {
-  nav.classList.toggle("open");
-  document.body.classList.toggle("menu-open");
-});
-nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
-  nav.classList.remove("open");
-  document.body.classList.remove("menu-open");
+const menu=document.getElementById("menuToggle"), nav=document.getElementById("nav");
+if(menu&&nav){menu.onclick=()=>nav.classList.toggle("open");nav.querySelectorAll("a").forEach(a=>a.onclick=()=>nav.classList.remove("open"))}
+if("IntersectionObserver" in window){
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target)}}),{threshold:.08});
+ document.querySelectorAll(".reveal").forEach(x=>io.observe(x));
+}else document.querySelectorAll(".reveal").forEach(x=>x.classList.add("visible"));
+const val=id=>{const e=document.getElementById(id);return e?(e.value.trim()||"-"):"-"};
+const send=text=>window.open("https://wa.me/905347262206?text="+encodeURIComponent(text),"_blank");
+document.querySelectorAll("form[data-form]").forEach(f=>f.addEventListener("submit",e=>{
+ e.preventDefault(); const t=f.dataset.form; let msg="";
+ if(t==="general") msg=`Merhaba Çetin Design,\n\nGENEL TEKLİF\nAd/Firma: ${val("g_name")}\nTelefon: ${val("g_phone")}\nHizmet: ${val("g_service")}\nTalep: ${val("g_note")}`;
+ if(t==="ambalaj") msg=`Merhaba Çetin Design,\n\nAMBALAJ TEKLİFİ\nAd/Firma: ${val("a_name")}\nTelefon: ${val("a_phone")}\nÜrün/Kutu: ${val("a_product")}\nAdet: ${val("a_qty")}\nŞehir: ${val("a_city")}\nNot: ${val("a_note")}`;
+ if(t==="textile") msg=`Merhaba Çetin Design,\n\nTEKSTİL BASKI TEKLİFİ\nAd/Firma: ${val("t_name")}\nTelefon: ${val("t_phone")}\nÜrün: ${val("t_product")}\nAdet: ${val("t_qty")}\nRenk: ${val("t_color")}\nBaskı: ${val("t_print")}\nNot: ${val("t_note")}`;
+ if(t==="promosyon") msg=`Merhaba Çetin Design,\n\nPROMOSYON TEKLİFİ\nAd/Firma: ${val("p_name")}\nTelefon: ${val("p_phone")}\nÜrün: ${val("p_product")}\nAdet: ${val("p_qty")}\nBaskı: ${val("p_print")}\nNot: ${val("p_note")}`;
+ if(t==="matbaa") msg=`Merhaba Çetin Design,\n\nMATBAA/BASKI TEKLİFİ\nAd/Firma: ${val("m_name")}\nTelefon: ${val("m_phone")}\nÜrün: ${val("m_product")}\nAdet: ${val("m_qty")}\nÖzellik: ${val("m_print")}\nNot: ${val("m_note")}`;
+ if(t==="bicak") msg=`Merhaba Çetin Design,\n\nBIÇAK & SARF TEKLİFİ\nAd/Firma: ${val("b_name")}\nTelefon: ${val("b_phone")}\nTip: ${val("b_type")}\nYükseklik: ${val("b_height")}\nKalınlık: ${val("b_thick")}\nMetre: ${val("b_meter")}\nPerfore: ${val("b_perf")}\nNot: ${val("b_note")}`;
+ send(msg);
 }));
-
-document.getElementById("quoteForm").addEventListener("submit", e => {
-  e.preventDefault();
-  const g = id => document.getElementById(id).value.trim() || "-";
-  const text =
-`Merhaba Çetin Design,
-
-Ad / Firma: ${g("name")}
-Telefon: ${g("phone")}
-Ürün / Kutu: ${g("product")}
-Tahmini adet: ${g("quantity")}
-Şehir: ${g("city")}
-Not: ${g("note")}
-
-Teklif almak istiyorum.`;
-  window.open("https://wa.me/905347262206?text=" + encodeURIComponent(text), "_blank");
-});
-
-
-const bladeForm = document.getElementById("bladeForm");
-if (bladeForm) {
-  bladeForm.addEventListener("submit", e => {
-    e.preventDefault();
-    const g = id => document.getElementById(id).value.trim() || "-";
-    const text =
-`Merhaba Çetin Design,
-
-BIÇAK TEKLİF TALEBİ
-Bıçak tipi: ${g("bladeType")}
-Yükseklik: ${g("bladeHeight")}
-Kalınlık: ${g("bladeThickness")}
-Perfore bilgisi: ${g("bladePerf")}
-Toplam metre: ${g("bladeMeters")}
-Ek not: ${g("bladeNote")}
-
-Fiyat ve uygunluk bilgisi rica ediyorum.`;
-    window.open("https://wa.me/905347262206?text=" + encodeURIComponent(text), "_blank");
-  });
-}
-
-const promoForm=document.getElementById("promoForm");
-if(promoForm){promoForm.addEventListener("submit",e=>{e.preventDefault();const g=id=>document.getElementById(id).value.trim()||"-";const text=`Merhaba Çetin Design,
-
-KURUMSAL BASKI & PROMOSYON TEKLİFİ
-Ürün: ${g("promoProduct")}
-Adet: ${g("promoQty")}
-Baskı: ${g("promoPrint")}
-Firma / Marka: ${g("promoBrand")}
-Ek not: ${g("promoNote")}
-
-Fiyat ve üretim süresi hakkında teklif rica ediyorum.`;window.open("https://wa.me/905347262206?text="+encodeURIComponent(text),"_blank")})}
