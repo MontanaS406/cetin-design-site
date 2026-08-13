@@ -14,10 +14,10 @@ bicak.html
 iletisim.html
 styles.css
 script.js
-home-hero.webp
-packaging.webp
-textile-hero.webp
-textile-detail.webp
-promo.webp
-print.webp
-blade.webp
+home-hero.png
+packaging.png
+textile-hero.png
+textile-detail.png
+promo.png
+print.png
+blade.png
