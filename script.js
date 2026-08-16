@@ -24,3 +24,5 @@ if(document.getElementById("productPage")){
    window.open("https://wa.me/905347262206?text="+msg,"_blank");
  };
 }
+
+const header=document.querySelector('.topbar');window.addEventListener('scroll',()=>header?.classList.toggle('scrolled',window.scrollY>20),{passive:true});
