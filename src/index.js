@@ -1,3 +1,4 @@
+// Çetin Design production Worker — GitHub is the source of truth.
 const json=(data,status=200)=>new Response(JSON.stringify(data),{status,headers:{"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store"}});
 const parseProduct=r=>({...r,sizes:JSON.parse(r.sizes||"[]"),colors:JSON.parse(r.colors||"[]"),active:!!r.active,featured:!!r.featured});
 const clean=b=>({slug:String(b.slug||"").trim(),name:String(b.name||"").trim(),description:String(b.description||"").trim(),price:Number(b.price||0),image:String(b.image||"").trim(),category:String(b.category||"tshirt").trim(),sizes:JSON.stringify(Array.isArray(b.sizes)?b.sizes:[]),colors:JSON.stringify(Array.isArray(b.colors)?b.colors:[]),active:b.active?1:0,featured:b.featured?1:0,sort_order:Number(b.sort_order||0)});
