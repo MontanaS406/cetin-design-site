@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cetin-design-site",
+  "workers_dev": false,
+  "preview_urls": false,
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-16",
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "cetin-design-db",
+      "database_id": "c7523ab4-4dd0-4ad3-96f1-74264e69eced"
+    }
+  ]
+}
