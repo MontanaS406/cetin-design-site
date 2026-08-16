@@ -1,6 +1,6 @@
 window.CetinStore={
  async list(category="",featured=false){const q=new URLSearchParams();if(category)q.set("category",category);if(featured)q.set("featured","1");const r=await fetch("/api/products?"+q);if(!r.ok)throw new Error("Ürünler alınamadı");return r.json();},
  card(p){const price=Number(p.price||0)>0?`${Number(p.price).toLocaleString("tr-TR")} TL`:"Fiyat için iletişime geç";return `<a class="product-card" href="urun.html?p=${encodeURIComponent(p.slug)}"><div class="product-img"><img src="${p.image||''}" alt="${p.name||''}"></div><div class="product-info"><b>${p.name||''}</b><span>${(p.colors||[])[0]||''} / ${(p.sizes||[]).length?'Beden seçenekleri':''}</span><strong>${price} →</strong></div></a>`;},
- async hydrate(){const f=document.getElementById("featuredProducts");if(f){try{f.innerHTML=(await this.list("",true)).slice(0,4).map(this.card).join("")}catch(e){}}const t=document.getElementById("tshirtProducts");if(t){try{t.innerHTML=(await this.list("tshirt")).map(this.card).join("")}catch(e){}}}
+ async hydrate(){const f=document.getElementById("featuredProducts");if(f){try{f.innerHTML=(await this.list("",true)).slice(0,4).map(this.card).join("")}catch(e){}}const t=document.getElementById("tshirtProducts");if(t){try{t.innerHTML=(await this.list("tshirt")).map(this.card).join("")}catch(e){}}const s=document.getElementById("sweatProducts");if(s){try{s.innerHTML=(await this.list("sweat")).map(this.card).join("")}catch(e){}}}
 };
 document.addEventListener("DOMContentLoaded",()=>window.CetinStore.hydrate());
